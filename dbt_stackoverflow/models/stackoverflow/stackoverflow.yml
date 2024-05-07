@@ -5,6 +5,26 @@ sources:
     schema: stackoverflow
     tables:
       - name: posts_questions
+        columns:
+        - name: id
+          tests:
+            - unique
+            - not_null
       - name: posts_answers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
       - name: users
+        columns:
+            - name: id
+              tests:
+                - unique
+                - not_null
       - name: votes
+        columns:
+            - name: id
+              tests:
+                - unique
+                - not_null
