@@ -32,8 +32,12 @@ SELECT
     tag as tag_name,
     count(*) as tag_count,
     -- placeholder for count of accepted answers
+    count(case when questions_joined_to_tags.accepted_answer_id is not null then question_id else null end) count_questions_with_accepted_answers
     -- placeholder for upvotes and downvotes in the last 6 months
     -- placeholder for answer in the last 6 months
     -- count(case when questions_joined_to_tags.qu)
 FROM {{ref('dim_tag')}} dim_tag
 
+LEFT JOIN questions_joined_to_tags on dim_tag.tag = questions_joined_to_tags.tag
+
+-- Ideally I want to avoid using tag as a join, this will require some thought to resolve
