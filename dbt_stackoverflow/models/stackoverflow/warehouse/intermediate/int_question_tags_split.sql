@@ -17,8 +17,8 @@ WITH grouped_tags as (
     SELECT
         surrogate_key_tags,
         question_id,
-        split_question_tags
-    from grouped_tags, UNNEST(SPLIT(question_tags,'|')) AS split_question_tags
+        split_question_tag
+    from grouped_tags, UNNEST(SPLIT(question_tags,'|')) AS split_question_tag
 )
 
 -- This can act as a bridging table between questions and tags (topics) so we can build fact tables to analyse the tags and how active they are on SO
