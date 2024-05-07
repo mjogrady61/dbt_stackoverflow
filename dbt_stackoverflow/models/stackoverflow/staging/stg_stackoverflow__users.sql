@@ -7,6 +7,7 @@ with source as (
 , renamed as (
 
     SELECT 
+       {{ dbt_utils.generate_surrogate_key(["id"]) }} as surrogate_key_users,
        id                AS user_id,
        display_name      AS user_display_name,
        about_me          AS user_about_me,
